@@ -29,12 +29,48 @@
 
     <section>
       <h2>Gallery</h2>
-      <p>Images will be displayed here.</p>
+        <div class="gallery">
+          <img src="images/portugal.jpg" alt="Photo 1" />
+          <img src="images/photo2.jpg" alt="Photo 2" />
+          <img src="images/photo3.jpg" alt="Photo 3" />
+          <!-- Add more images as needed -->
+        </div>
+      
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="lightbox">
+          <span class="close">&times;</span>
+          <img class="lightbox-content" id="lightbox-img" />
+        </div>      
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Danyang</p>
   </footer>
+  <script>
+    const galleryImages = document.querySelectorAll(".gallery img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".lightbox .close");
+  
+    galleryImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+      });
+    });
+  
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = "none";
+      }
+    });
+  </script>
+  
 </body>
+
 </html>
